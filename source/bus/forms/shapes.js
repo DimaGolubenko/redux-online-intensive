@@ -1,10 +1,13 @@
 // Core
 import { object, string, boolean } from "yup";
 
+//Instruments
+import { invite } from "../../REST";
+
 export const login = {
     shape: {
-        email:    "",
-        password: "",
+        email:    "dimagolubenko@gmail.com",
+        password: "17081985",
         remember: false,
     },
     schema: object().shape({
@@ -24,7 +27,7 @@ export const signup = {
         lastName:  "",
         email:     "",
         password:  "",
-        invite:    "",
+        invite,
     },
     schema: object().shape({
         firstName: string().required(),
