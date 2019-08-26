@@ -1,6 +1,6 @@
 //Core
 import { put, apply } from "redux-saga/effects";
-import { replace } from 'react-router-redux'
+import { replace } from "react-router-redux";
 
 //Instruments
 import { api } from "../../../../REST";
@@ -8,7 +8,8 @@ import { authActions } from "../../../auth/actions";
 import { uiActions } from "../../../ui/actions";
 import { profileActions } from "../../../profile/actions";
 import { postActions } from "../../../posts/actions";
-import { book } from '../../../../navigation/book'
+import { usersActions } from "../../../users/actions";
+import { book } from "../../../../navigation/book";
 
 export function* logout () {
     try {
@@ -28,6 +29,7 @@ export function* logout () {
         yield apply(localStorage, localStorage.removeItem, ["remember"]);
         yield put(profileActions.clearProfile());
         yield put(postActions.clearPosts());
+        yield put(usersActions.clearUsers());
         yield put(uiActions.stopFetching());
         yield put(authActions.logout());
         yield put(replace(book.login));
